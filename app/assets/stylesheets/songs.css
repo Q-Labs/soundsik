@@ -1,7 +1,8 @@
 body {
   background-image: url("/assets/ss2.png");
   background-size: cover;
-  font-family: 'Source Sans Pro'
+  font-family: 'Source Sans Pro';
+  color: white;
 }
 
 h1 {

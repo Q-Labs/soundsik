@@ -15,8 +15,12 @@ $(function(){
         data: {zip_code: zipCode},
         success: function(data){
           console.log(data)
+          $('#moods-list').children().remove();
+          $('#genres-list').children().remove();
           var weatherData = data;
           weather(weatherData);
+          renderMoods(moods);
+          renderGenres(genres);
         }
       });
     }

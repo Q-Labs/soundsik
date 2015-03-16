@@ -1,5 +1,16 @@
 class SongsController < ApplicationController
+  include SongsHelper
+
   def index
+    mood  = params[:mood] ? params[:mood] : ""
+    genre = params[:genre] ? params[:genre] : ""
+    if mood != ""
+      songs = get_songs(genre, mood)
+    end
+    respond_to do |format|
+      format.html
+      format.json { render json: {songs: songs} }
+    end
   end
 
   def create
@@ -30,9 +41,9 @@ class SongsController < ApplicationController
     @type_of_weather = type_of_weather
 
     data = {
-      "type_of_weather": @type_of_weather,
-      "time_of_day": @time_of_day,
-      "location_temp": @location_temp
+      type_of_weather: @type_of_weather,
+      time_of_day: @time_of_day,
+      location_temp: @location_temp
     }
 
     render json: data
@@ -64,4 +75,5 @@ class SongsController < ApplicationController
       sun_position(weather_data["sys"]["sunrise"], weather_data["sys"]["sunset"])
     end
   end
+
 end

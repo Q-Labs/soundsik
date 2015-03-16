@@ -10,6 +10,9 @@ function renderGenres(ary){
 
    //Add button to list
    $('#genres-list').append(label).append(radioBox);
+
  });
 }
+
+
 
